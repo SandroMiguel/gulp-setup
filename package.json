@@ -1,6 +1,6 @@
 {
     "name": "gulp-setup",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Gulp setup",
     "main": "index.js",
     "license": "MIT",
