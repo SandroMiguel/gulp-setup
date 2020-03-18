@@ -1,40 +1,44 @@
 {
-  "name": "gulp-setup",
-  "version": "0.0.1",
-  "description": "Gulp setup",
-  "main": "index.js",
-  "license": "MIT",
-  "author": {
-    "name": "Sandro Miguel Marques",
-    "email": "sandromiguel@sandromiguel.com",
-    "url": "http://sandromiguel.com"
-  },
-  "keywords": [
-    "gulp",
-    "setup"
-  ],
-  "repository": "git@github.com:SandroMiguel/gulp-setup.git",
-  "bugs": {
-    "url": "https://github.com/SandroMiguel/gulp-setup/issues"
-  },
-  "scripts": {
-    "release": "standard-version"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    "name": "gulp-setup",
+    "version": "0.0.1",
+    "description": "Gulp setup",
+    "main": "index.js",
+    "license": "MIT",
+    "author": {
+        "name": "Sandro Miguel Marques",
+        "email": "sandromiguel@sandromiguel.com",
+        "url": "http://sandromiguel.com"
+    },
+    "keywords": [
+        "gulp",
+        "setup"
+    ],
+    "repository": "git@github.com:SandroMiguel/gulp-setup.git",
+    "bugs": {
+        "url": "https://github.com/SandroMiguel/gulp-setup/issues"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "lint:format": "prettier --write \"./**/*.{js,jsx,json}\"",
+        "release": "standard-version"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-conventional": "^8.3.4",
+        "cz-conventional-changelog": "^3.1.0",
+        "eslint-config-cecilia": "^1.7.0",
+        "husky": "^4.2.3",
+        "standard-version": "^7.1.0"
     }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "cz-conventional-changelog": "^3.1.0",
-    "husky": "^4.2.3",
-    "standard-version": "^7.1.0"
-  }
 }

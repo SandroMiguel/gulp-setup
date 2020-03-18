@@ -17,7 +17,12 @@ const path = {
     return {
       scssFiles: [path.srcFolder, 'css', '*.scss'].join('/'),
       jsFiles: [path.srcFolder, 'js', '*.js'].join('/'),
-      cssMinFiles: [path.nodeModulesFolder, 'cecilia-css', 'dist', '*.min.css'].join('/'),
+      cssMinFiles: [
+        path.nodeModulesFolder,
+        'cecilia-css',
+        'dist',
+        '*.min.css',
+      ].join('/'),
     }
   },
   get dest() {
@@ -42,7 +47,7 @@ function style() {
     .pipe(sourcemaps.init())
     .pipe(sass())
     .on('error', sass.logError)
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(postcss([autoprefixer(), cssnano()]))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(path.dest.cssFolder))
@@ -54,7 +59,8 @@ function style() {
  * @example const build = gulp.series(. . ., copyMinifiedCss, . . .)
  */
 function copyMinifiedCss() {
-  return gulp.src(path.src.cssMinFiles)
+  return gulp
+    .src(path.src.cssMinFiles)
     .pipe(gulp.dest(path.dest.css.vendorFolder))
 }
 
@@ -67,9 +73,9 @@ function javascript() {
   return gulp
     .src(path.src.jsFiles)
     .pipe(sourcemaps.init())
-    .pipe(babel({presets: ['@babel/env']}))
+    .pipe(babel({ presets: ['@babel/env'] }))
     .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(path.dest.jsFolder))
 }
@@ -81,7 +87,8 @@ function javascript() {
  */
 function cacheBust() {
   const cbString = new Date().getTime()
-  return gulp.src([[path.destFolder, 'index.php'].join('/')])
+  return gulp
+    .src([[path.destFolder, 'index.php'].join('/')])
     .pipe(replace(/cb=\d+/g, `cb=${cbString}`))
     .pipe(gulp.dest(path.destFolder))
 }
