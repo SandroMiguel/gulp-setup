@@ -39,6 +39,6 @@
         "cz-conventional-changelog": "^3.1.0",
         "eslint-config-cecilia": "^1.7.0",
         "husky": "^4.2.3",
-        "standard-version": "^7.1.0"
+        "standard-version": "^8.0.1"
     }
 }
